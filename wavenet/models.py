@@ -78,8 +78,7 @@ class Model(object):
                 terminal = True
             losses.append(cost)
             if i % 50 == 0:
-                plt.plot(losses)
-                plt.show()
+                print("loss:"+str(losses))
 
 
 class Generator(object):
@@ -144,6 +143,7 @@ class Generator(object):
 
             if step % 1000 == 0:
                 predictions_ = np.concatenate(predictions, axis=1)
+                print("prediction:")
                 print(predictions_[0, :])
                 # plt.plot(predictions_[0, :], label='pred')
                 # plt.legend()
