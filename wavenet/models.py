@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 from wavenet.layers import (_causal_linear, _output_linear, conv1d, dilated_conv1d)
@@ -145,11 +144,12 @@ class Generator(object):
 
             if step % 1000 == 0:
                 predictions_ = np.concatenate(predictions, axis=1)
-                plt.plot(predictions_[0, :], label='pred')
-                plt.legend()
-                plt.xlabel('samples from start')
-                plt.ylabel('signal')
-                plt.show()
+                print(predictions_[0, :])
+                # plt.plot(predictions_[0, :], label='pred')
+                # plt.legend()
+                # plt.xlabel('samples from start')
+                # plt.ylabel('signal')
+                # plt.show()
 
         predictions_ = np.concatenate(predictions, axis=1)
         return predictions_
