@@ -26,7 +26,7 @@ def make_batch(path):
     return inputs, targets
 
 
-def write2wave(path, data, nframes, nchannels=1, sampwidth=16, framerate=44100):
+def write2wave(path, data, nframes, nchannels=1, sampwidth=2, framerate=44100):
     with wave.open(path, "w")as wave_file:
         wave_file.setparams((nchannels, sampwidth, framerate, nframes, None, "None"))
         wave_file.writeframes(data)
