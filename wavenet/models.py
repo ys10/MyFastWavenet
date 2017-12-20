@@ -1,3 +1,4 @@
+# coding=utf-8
 import numpy as np
 import tensorflow as tf
 from wavenet.layers import (_causal_linear, _output_linear, conv1d, dilated_conv1d)
@@ -74,7 +75,7 @@ class Model(object):
         while not terminal:
             i += 1
             cost = self._train(inputs, targets)
-            if cost < 1:
+            if cost < 5e-2:
                 terminal = True
             losses.append(cost)
             if i % 50 == 0:

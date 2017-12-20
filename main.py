@@ -34,4 +34,4 @@ toc = time()
 print('Generating took {} seconds.'.format(toc-tic))
 
 # Audio(predictions, rate=44100)
-write2wave("assets/predictions", predictions, len(predictions))
+write2wave("assets/predictions.wav", predictions, len(predictions))
