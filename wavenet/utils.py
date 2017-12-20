@@ -1,4 +1,5 @@
 import numpy as np
+import wave
 
 from scipy.io import wavfile
 
@@ -23,3 +24,11 @@ def make_batch(path):
     # Encode targets as ints.
     targets = (np.digitize(data_[1::], bins, right=False) - 1)[None, :]
     return inputs, targets
+
+
+def write2wave(path, data, nframes, nchannels=1, sampwidth=16, framerate=44100):
+    with wave.open(path, "w")as wave_file:
+        wave_file.setparams((nchannels, sampwidth, framerate, nframes, None, "None"))
+        wave_file.writeframes(data)
+        pass
+    pass

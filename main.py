@@ -1,7 +1,7 @@
 # coding UTF-8
 from time import time
 
-from wavenet.utils import make_batch
+from wavenet.utils import make_batch, write2wave
 from wavenet.models import Model, Generator
 
 from IPython.display import Audio
@@ -9,13 +9,13 @@ from IPython.display import Audio
 inputs, targets = make_batch('assets/voice.wav')
 num_time_samples = inputs.shape[1]
 num_channels = 1
-gpu_fraction = 1.0
+gpu_fraction = 0.8
 
 model = Model(num_time_samples=num_time_samples,
               num_channels=num_channels,
               gpu_fraction=gpu_fraction)
 
-Audio(inputs.reshape(inputs.shape[1]), rate=44100)
+# Audio(inputs.reshape(inputs.shape[1]), rate=44100)
 
 tic = time()
 model.train(inputs, targets)
@@ -33,4 +33,5 @@ predictions = generator.run(input_, 32000)
 toc = time()
 print('Generating took {} seconds.'.format(toc-tic))
 
-Audio(predictions, rate=44100)
+# Audio(predictions, rate=44100)
+write2wave("assets/predictions", predictions, len(predictions))
