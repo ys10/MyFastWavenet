@@ -75,7 +75,7 @@ class Model(object):
         while not terminal:
             i += 1
             cost = self._train(inputs, targets)
-            if cost < 5e-2:
+            if cost < 1e-3:
                 terminal = True
             losses.append(cost)
             if i % 50 == 0:
